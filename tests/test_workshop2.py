@@ -1,25 +1,22 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""Tests for `workshop2` package."""
+import sys
+sys.path.append('../')
 
 import pytest
+import unittest
 
+import numpy as np
 
 from workshop2 import workshop2
 
-
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+class test_ckhr(unittest.TestCase):
+    def test_calc_mean(self):
+        assert workshop2.calc_mean(np.arange(1,20,2)) == 10
+        assert workshop2.calc_mean(np.arange(-10,11,1)) == 0
+        assert workshop2.calc_mean(np.ones(10)*10) == 10
+        assert workshop2.answer == 5
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+if __name__ == '__main__':
+    unittest.main()
+
+
